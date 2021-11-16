@@ -1,0 +1,35 @@
+/* * {
+    font-size: 1em;
+} */
+
+.sidenavItems {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.men-item {
+    padding: 1.5em;
+    width: 100%;
+    text-align: center;
+}
+
+.mainmenu-item {
+    padding: 0;
+    background-color: #5ea1fd;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.men-item:hover {
+    background-color: #90beff;
+    border-right: 5px solid #5ea1fd;
+}
+
+i {
+    font-size: 3em;
+}

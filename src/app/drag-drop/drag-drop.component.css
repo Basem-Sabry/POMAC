@@ -1,0 +1,24 @@
+.wrappingParent {
+    display: flex;
+    padding: 2em;
+    justify-content: space-around;
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.example-container {
+    background-color: #ffff;
+    padding: 1em;
+}
+
+mat-card {
+    margin-bottom: 2em;
+    border-radius: 23px;
+}

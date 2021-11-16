@@ -1,0 +1,35 @@
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+input {
+    outline: none;
+    background: none;
+    border: none;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.w-4 {
+    width: 4em;
+}
+
+.admin {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.admin span {
+    margin-right: .4em;
+}

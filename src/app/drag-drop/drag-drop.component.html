@@ -1,19 +1,22 @@
 <div class="row ml-2">
-    <div class="col-6"><h2>Pomac FrontEnd Technical Task</h2></div>
     <div class="col-6">
-        <button mat-raised-button  mat-button color="primary" (click)="openDialog()"><mat-icon>add</mat-icon>New Task</button>
+        <h2>Pomac FrontEnd Technical Task</h2>
+    </div>
+    <div class="col-6">
+        <button mat-raised-button mat-button color="primary" (click)="openDialog()"><mat-icon>add</mat-icon>New Task</button>
     </div>
 </div>
 <div class="wrappingParent">
-   
+
     <div class="example-container">
         <h2>Tasks</h2>
 
-        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
-            <mat-card class="example-card" *ngFor="let item of todo" cdkDrag>
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="alltasks" [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
+            <mat-card class="example-card" *ngFor="let item of alltasks" cdkDrag>
 
-                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <img *ngIf="item.imgUr" width="150" height="150" mat-card-image [src]="item.imgUr" alt="Photo of a Shiba Inu">
                 <mat-card-content>
+                    <h2 class="m-0">{{item.title}}</h2>
                     <p>
                         {{item.desc}}
                     </p>
@@ -23,7 +26,7 @@
 
 
 
-            <div class="example-box" *ngFor="let item of todo" cdkDrag></div>
+            <div class="example-box" *ngFor="let item of alltasks" cdkDrag></div>
         </div>
     </div>
 
@@ -34,8 +37,10 @@
 
             <mat-card class="example-card" *ngFor="let item of done" cdkDrag>
 
-                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <img *ngIf="item.imgUr" width="150" height="150" mat-card-image [src]="item.imgUr" alt="Photo of a Shiba Inu">
                 <mat-card-content>
+                    <h2 class="m-0">{{item.title}}</h2>
+
                     <p>
                         {{item.desc}}
                     </p>
@@ -47,5 +52,3 @@
         </div>
     </div>
 </div>
-
-<div *ngFor="let x of alltasks"> {{x.desc}}</div>

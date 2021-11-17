@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./drag-drop.component.css']
 })
 export class DragDropComponent  {
-  alltasks: any[] | undefined;
+  alltasks: any[] =[];
   constructor(public dialog: MatDialog , private taskService:TasksServiceService) {
  taskService.getTasks().pipe(map((response:any )=>{
       const tasks = [];
@@ -22,26 +22,27 @@ export class DragDropComponent  {
         }
         return tasks;
       })).subscribe(res=>{
-       
         this.alltasks =  res})
+
+        
+      }
       
-    }
-
-    
-  openDialog() {
-    const dialogRef = this.dialog.open(NewTaskComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  todo = [{name:'first', desc : "hello"}];
-
-  done = [{name:'first', desc : "hello"}];
-
-  drop(event: CdkDragDrop<{ name: string; desc: string; }[], any, any>) {
-    console.log(event.container.data)
+      
+      openDialog() {
+        const dialogRef = this.dialog.open(NewTaskComponent);
+        
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(`Dialog result: ${result}`);
+        });
+      }
+      
+      
+      todo = [{name:'first', desc : "hello"}];
+  done = [{title:'first', desc : "hello",imgUr:'https://image.freepik.com/free-icon/important-person_318-10744.jpg'}];
+      catched :any[]=[]  
+  drop(event: CdkDragDrop<any[] , any[], any[]>) {
+this.catched=event.container.data
+    console.log('droping',event.container.data)
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

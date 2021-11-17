@@ -17,6 +17,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { NewTaskComponent } from './new-task/new-task.component';
 import {MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import { TasksServiceService } from './services/tasks-service.service';
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [TasksServiceService],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

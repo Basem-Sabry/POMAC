@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {MatDialog} from '@angular/material/dialog';
 import { NewTaskComponent } from '../new-task/new-task.component';
-
+import { TasksServiceService } from '../services/tasks-service.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'drag-drop',
@@ -10,8 +11,23 @@ import { NewTaskComponent } from '../new-task/new-task.component';
   styleUrls: ['./drag-drop.component.css']
 })
 export class DragDropComponent  {
-  constructor(public dialog: MatDialog) {}
+  alltasks: any[] | undefined;
+  constructor(public dialog: MatDialog , private taskService:TasksServiceService) {
+ taskService.getTasks().pipe(map((response:any )=>{
+      const tasks = [];
+      
+      for(const key in response){
+        if(response.hasOwnProperty(key)){
+          tasks.push({ ...response[key]})}
+        }
+        return tasks;
+      })).subscribe(res=>{
+       
+        this.alltasks =  res})
+      
+    }
 
+    
   openDialog() {
     const dialogRef = this.dialog.open(NewTaskComponent);
 
@@ -20,9 +36,9 @@ export class DragDropComponent  {
     });
   }
 
-  todo = [{name:'first', desc : "hello"}, {name:'second', desc : "hello2"}, {name:'third', desc : "hello3"}, {name:'forth', desc : "hello4"}];
+  todo = [{name:'first', desc : "hello"}];
 
-  done = [{name:'first', desc : "hello"}, {name:'first', desc : "hello"}, {name:'first', desc : "hello"}, {name:'first', desc : "hello"}, {name:'first', desc : "hello"}];
+  done = [{name:'first', desc : "hello"}];
 
   drop(event: CdkDragDrop<{ name: string; desc: string; }[], any, any>) {
     console.log(event.container.data)

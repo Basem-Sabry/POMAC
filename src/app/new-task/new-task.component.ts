@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TasksServiceService } from '../services/tasks-service.service';
 
 @Component({
   selector: 'app-new-task',
@@ -9,8 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class NewTaskComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
-  Users: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  constructor(private http:HttpClient, private taskService:TasksServiceService) { }
+  Users: string[] = ['Ahmed', 'Mohamed', 'Mostafa', 'Basem', 'Islam', 'Tomato'];
     newTaskForm!: FormGroup;
   ngOnInit(): void {
     this.newTaskForm= new FormGroup({
@@ -28,8 +29,9 @@ export class NewTaskComponent implements OnInit {
   }
   
   onsubmit(){
-    // this.http.post('https://pomac-db-default-rtdb.firebaseio.com/tasks.json',this.newTaskForm.value).subscribe(x=>console.log(x))
-    console.log(this.newTaskForm)
+    this.taskService.addTask(this.newTaskForm.value)
+
+    
   }
 
 }

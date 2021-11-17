@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {MatDialog} from '@angular/material/dialog';
+import { NewTaskComponent } from '../new-task/new-task.component';
 
 
 @Component({
@@ -8,6 +10,15 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   styleUrls: ['./drag-drop.component.css']
 })
 export class DragDropComponent  {
+  constructor(public dialog: MatDialog) {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open(NewTaskComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   todo = [{name:'first', desc : "hello"}, {name:'second', desc : "hello2"}, {name:'third', desc : "hello3"}, {name:'forth', desc : "hello4"}];
 

@@ -1,7 +1,6 @@
 .wrappingParent {
     display: flex;
     padding: 2em;
-    justify-content: space-around;
 }
 
 .example-card {
@@ -14,7 +13,6 @@
 }
 
 .example-container {
-    background-color: #ffff;
     padding: 1em;
 }
 

@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="newTaskForm" (ngSubmit)="onsubmit()">
+                <div class="form-group">
+                    <label for="title"> Title</label>
+                    <input formControlName="title" type="text" id="title" class="form-control">
+                    <div class="alert alert-danger mt-1" *ngIf="!newTaskForm.get('title')?.valid &&newTaskForm.get('title')?.touched">
+                        Title is Required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="desc"> Description</label>
+                    <textarea  formControlName="desc" id="desc" class="form-control" ></textarea>
+                    <div class="alert alert-danger mt-1" *ngIf="!newTaskForm.get('desc')?.valid &&newTaskForm.get('desc')?.touched">
+                         Description  is Required
+                    </div>
+                </div>
+                <div class="form-group users">
+
+                    
+                    <label for="Users"> Users</label>
+                    <mat-form-field appearance="fill">
+                        <mat-select formControlName="User"  >
+                          <mat-option  *ngFor="let User of Users" [value]="User">{{User}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+              
+                </div>
+                <div class="form-group">
+                    <label for="date"> Date</label>
+                    <input formControlName="date" type="date" id="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="img"> ImgUrl</label>
+                    <input formControlName="imgUr"   #imgurl type="text" id="img" class="form-control">
+                </div>
+                <img class="previewImage"  [src]="imgurl.value" >
+                <div class="buttonGroup">
+                    <button class="btn btn-success mr-2" [disabled]="newTaskForm.status==='INVALID'" > Submit</button>
+                    <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

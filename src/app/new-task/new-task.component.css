@@ -1,0 +1,13 @@
+.users{
+    display: flex;
+    flex-direction: column;
+}
+.buttonGroup{
+    
+    text-align: end;
+
+}
+.previewImage{
+    margin-bottom: 1em;
+        border-radius: 50%;
+}

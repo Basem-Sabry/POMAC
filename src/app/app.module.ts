@@ -16,6 +16,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NewTaskComponent } from './new-task/new-task.component';
 import {MatSelectModule} from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatIconModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
 
   ],
   providers: [],

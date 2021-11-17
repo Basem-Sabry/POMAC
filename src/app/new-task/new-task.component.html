@@ -35,6 +35,8 @@
                     <label for="img"> ImgUrl</label>
                     <input formControlName="imgUr"   #imgurl type="text" id="img" class="form-control">
                 </div>
+
+                <input type="hidden"  formControlName="status">
                 <img class="previewImage"  [src]="imgurl.value" >
                 <div class="buttonGroup">
                     <button class="btn btn-success mr-2" [disabled]="newTaskForm.status==='INVALID'" > Submit</button>

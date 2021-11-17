@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class NewTaskComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
   Users: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
     newTaskForm!: FormGroup;
   ngOnInit(): void {
@@ -17,16 +18,17 @@ export class NewTaskComponent implements OnInit {
       User : new FormControl(null),
       desc: new FormControl(null,Validators.required),
       date: new FormControl(null),
-      imgUr: new FormControl(null,Validators.required)
+      imgUr: new FormControl(null,Validators.required),
+      status: new FormControl('new')
+
 
 
       
     })
   }
-  get UserName() {
-    return this.newTaskForm.get('User');
-  }
+  
   onsubmit(){
+    // this.http.post('https://pomac-db-default-rtdb.firebaseio.com/tasks.json',this.newTaskForm.value).subscribe(x=>console.log(x))
     console.log(this.newTaskForm)
   }
 

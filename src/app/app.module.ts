@@ -18,6 +18,7 @@ import { NewTaskComponent } from './new-task/new-task.component';
 import {MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { TasksServiceService } from './services/tasks-service.service';
+import { TaskDetailsComponent } from './task-details/task-details.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { TasksServiceService } from './services/tasks-service.service';
     NavbarComponent,
     DragDropComponent,
     NewTaskComponent,
+    TaskDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@
 }
 
 .example-container {
-    width: 20em;
+    width: 23em;
     padding: 1em 20px;
     background-color: #ffff;
     border-radius: 5px;
@@ -31,6 +31,42 @@ mat-card {
     box-shadow: 0px 0px 9px 3px rgba(0, 0, 0, 0.25);
     -webkit-box-shadow: 0px 0px 9px 3px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0px 0px 9px 3px rgba(0, 0, 0, 0.25);
+}
+
+.cdk-drop-list {
+    min-height: 200px;
+    min-width: 200px;
+}
+
+.btn-align-right {
+    float: right;
+    margin-right: 1.5em;
+    background-color: #6478d8;
+}
+
+.example-container .h2 {
+    color: #999de4;
+    font-weight: bold;
+}
+
+.example-container i {
+    color: #999de4;
+    font-weight: bold;
+    float: right;
+}
+
+.h2-title {
+    font-size: 30px;
+    margin: 0.3em 0.5em 0.5em;
+}
+
+.pen,
+.time {
+    color: #d6d4df !important;
+}
+
+.time {
+    font-weight: normal !important;
 }
 
 .cdk-drop-list {

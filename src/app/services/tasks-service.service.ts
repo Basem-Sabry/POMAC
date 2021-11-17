@@ -8,7 +8,7 @@ export class TasksServiceService {
   constructor(private http:HttpClient) { }
    db_url = "https://pomac-db-default-rtdb.firebaseio.com/tasks.json";
    addTask(body: any){
-    this.http.post(this.db_url,body).subscribe(res=>{console.log(res)})
+    this.http.post(this.db_url,body).subscribe(res=>{window.location.reload()})
    }
    getTasks(){
     return this.http.get(this.db_url)

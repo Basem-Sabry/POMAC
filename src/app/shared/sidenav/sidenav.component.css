@@ -1,7 +1,3 @@
-/* * {
-    font-size: 1em;
-} */
-
 .sidenavItems {
     display: flex;
     flex-wrap: wrap;
@@ -12,24 +8,37 @@
 }
 
 .men-item {
-    padding: 1.5em;
+    padding: 1.2em 1.5em 0.6em 1.5em;
     width: 100%;
     text-align: center;
 }
 
 .mainmenu-item {
     padding: 0;
-    background-color: #5ea1fd;
+    background-color: #6a7ad9;
     color: white;
     width: 100%;
     text-align: center;
+    height: 5.15em;
 }
 
 .men-item:hover {
-    background-color: #90beff;
-    border-right: 5px solid #5ea1fd;
+    background-color: #dee6f9;
+    border-right: 5px solid #7681cf;
 }
 
 i {
-    font-size: 3em;
+    font-size: 2.6em;
+}
+
+.h2 {
+    transform: scale(1.4, 0.8);
+    padding-top: 1.4em;
+    line-height: 0.95;
+}
+
+.mainmenu-item small {
+    display: block;
+    line-height: 0;
+    font-size: 9px;
 }

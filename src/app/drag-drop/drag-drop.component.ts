@@ -4,6 +4,8 @@ import {MatDialog} from '@angular/material/dialog';
 import { NewTaskComponent } from '../new-task/new-task.component';
 import { TasksServiceService } from '../services/tasks-service.service';
 import { map } from 'rxjs/operators';
+import { TaskDetailsComponent } from '../task-details/task-details.component';
+
 
 @Component({
   selector: 'drag-drop',
@@ -12,7 +14,7 @@ import { map } from 'rxjs/operators';
 })
 export class DragDropComponent  {
   alltasks: any[] =[];
-  constructor(public dialog: MatDialog , private taskService:TasksServiceService) {
+  constructor(public dialog: MatDialog , private taskService:TasksServiceService,) {
  taskService.getTasks().pipe(map((response:any )=>{
       const tasks = [];
       
@@ -29,7 +31,14 @@ export class DragDropComponent  {
       
       
       openDialog() {
-        const dialogRef = this.dialog.open(NewTaskComponent);
+        const dialogRef = this.dialog.open(NewTaskComponent,{autoFocus: true,panelClass: 'custom-dialog-container'});
+        
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(`Dialog result: ${result}`);
+        });
+      }
+      openDetails(x: any){
+        const dialogRef = this.dialog.open(TaskDetailsComponent,{data:x,autoFocus: true});
         
         dialogRef.afterClosed().subscribe(result => {
           console.log(`Dialog result: ${result}`);
@@ -38,14 +47,15 @@ export class DragDropComponent  {
       
       
       todo = [{name:'first', desc : "hello"}];
-  done = [{title:'first', desc : "hello",imgUr:'https://image.freepik.com/free-icon/important-person_318-10744.jpg'}];
+  done = [{title:'Angular', desc : "Angular Course I wanted to study",imgUr:'https://miro.medium.com/max/480/1*9A6E9kaZZ54idy0HLSlh-A.png',User:'Basem',date:"2021-11-01", status:'done'}];
       catched :any[]=[]  
   drop(event: CdkDragDrop<any[] , any[], any[]>) {
 this.catched=event.container.data
-    console.log('droping',event.container.data)
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      console.log(event.container.data)
+
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,

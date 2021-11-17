@@ -1,13 +1,40 @@
-.users{
+.users {
     display: flex;
     flex-direction: column;
 }
-.buttonGroup{
-    
-    text-align: end;
 
+.buttonGroup {
+    text-align: end;
 }
-.previewImage{
+
+.previewImage {
     margin-bottom: 1em;
-        border-radius: 50%;
+    border-radius: 5px;
+    max-width: 20em;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.25);
+}
+
+.container {
+    width: 25vw;
+    margin: 28px;
+}
+
+.mat-dialog-container {
+    padding: 0px !important;
+}
+
+.hr {
+    color: #f2f2f2;
+}
+
+.btn-light {
+    background-color: #adadad;
+    height: 2.44em;
+    color: #fff;
+}
+
+.custom-dialog-container {
+    max-height: 750px;
 }

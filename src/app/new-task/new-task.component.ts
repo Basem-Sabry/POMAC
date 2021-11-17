@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TasksServiceService } from '../services/tasks-service.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { TasksServiceService } from '../services/tasks-service.service';
 })
 export class NewTaskComponent implements OnInit {
 
-  constructor(private http:HttpClient, private taskService:TasksServiceService) { }
+  constructor(private http:HttpClient, private taskService:TasksServiceService,private router:Router) { }
   Users: string[] = ['Ahmed', 'Mohamed', 'Mostafa', 'Basem', 'Islam', 'Tomato'];
     newTaskForm!: FormGroup;
   ngOnInit(): void {
@@ -19,7 +20,7 @@ export class NewTaskComponent implements OnInit {
       User : new FormControl(null),
       desc: new FormControl(null,Validators.required),
       date: new FormControl(null),
-      imgUr: new FormControl(null,Validators.required),
+      imgUr: new FormControl(null),
       status: new FormControl('new')
 
 
@@ -30,7 +31,7 @@ export class NewTaskComponent implements OnInit {
   
   onsubmit(){
     this.taskService.addTask(this.newTaskForm.value)
-
+    // window.location.reload()
     
   }
 

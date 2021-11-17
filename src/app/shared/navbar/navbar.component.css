@@ -1,3 +1,8 @@
+.has-search {
+    padding-top: 0.6em;
+    margin-bottom: unset;
+}
+
 .has-search .form-control {
     padding-left: 2.375rem;
 }
@@ -32,4 +37,10 @@ input {
 
 .admin span {
     margin-right: .4em;
+    color: #979cc3;
+}
+
+.navbar {
+    background-color: #fff;
+    margin-bottom: 1em;
 }

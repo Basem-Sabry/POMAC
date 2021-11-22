@@ -3,96 +3,60 @@
         <h2 class="h2-title">Pomac FrontEnd Technical Task</h2>
     </div>
     <div class="col-6">
-        <button class="btn-align-right" mat-raised-button mat-button color="primary" (click)="openDialog()"><mat-icon>add</mat-icon>New Task</button>
+        <button class="btn-align-right" mat-raised-button mat-button color="primary" (click)="openDialog()">
+      <mat-icon>add</mat-icon>New Task
+    </button>
     </div>
 </div>
-<div class="wrappingParent">
+<div class="wrappingParent" cdkDropListGroup>
 
-    <div class="example-container">
+    <div class="example-container" *ngFor="let column of board.columns">
+
         <div class="row">
             <div class="col-6">
-                <h2 class="h2">Tasks</h2>
+                <h2 class="h2">{{column.name}}</h2>
             </div>
             <div class="col-6">
                 <i class="material-icons">more_horiz</i>
             </div>
         </div>
 
-        <div cdkDropList #allTasks="cdkDropList" [cdkDropListData]="alltasks" [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
-            <mat-card class="example-card" *ngFor="let item of alltasks" (click)="openDetails(item)" cdkDrag>
-
-                <img *ngIf="item.imgUr" width="150" height="150" mat-card-image [src]="item.imgUr" alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                    <div class="row">
-                        <div class="col-10">
-                            <h2 class="m-0">{{item.title}}</h2>
+        <div cdkDropList [cdkDropListData]="column.tasksName" class="example-list" (cdkDropListDropped)="drop($event)">
+            <mat-card class="example-card" *ngFor="let item of column.tasksName" (click)="openDetails(item)" cdkDrag>
+                {{item}}
+                <!-- 
+                    <img *ngIf="item.imgUr" width="150" height="150" mat-card-image [src]="item.imgUr" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-10">
+                                <h2 class="m-0">{{item.title}}</h2>
+                            </div>
+                            <div class="col-2">
+                                <i class="material-icons pen">mode_edit</i>
+                            </div>
                         </div>
-                        <div class="col-2">
-                            <i class="material-icons pen">mode_edit</i>
+                        <p>
+                            {{item.desc}}
+                        </p>
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <div class="row ml-3 mb-3">
+                            <i class="material-icons time">access_time</i>
+                            <span class="time ml-2 mr-4">{{item.date}}</span>
+                            <i class="material-icons time ml-5">account_circle</i>
+                            <i class="material-icons time">account_circle</i>
+                            <i class="material-icons time">account_circle</i>
                         </div>
-                    </div>
-                    <p>
-                        {{item.desc}}
-                    </p>
-                </mat-card-content>
-                <mat-card-footer>
-                    <div class="row ml-3 mb-3">
-                        <i class="material-icons time">access_time</i>
-                        <span class="time ml-2 mr-4">{{item.date}}</span>
-                        <i class="material-icons time ml-5">account_circle</i>
-                        <i class="material-icons time">account_circle</i>
-                        <i class="material-icons time">account_circle</i>
-                    </div>
-                </mat-card-footer>
+                    </mat-card-footer> -->
             </mat-card>
 
 
 
-            <div class="example-box" *ngFor="let item of alltasks" cdkDrag></div>
+            <!-- <div class="example-box" *ngFor="let item of alltasks" cdkDrag></div> -->
         </div>
     </div>
 
-    <div class="example-container">
-        <div class="row">
-            <div class="col-6">
-                <h2 class="h2">Done</h2>
-            </div>
-            <div class="col-6">
-                <i class="material-icons">more_horiz</i>
-            </div>
-        </div>
-
-        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[allTasks]" class="example-list" (cdkDropListDropped)="drop($event)">
-
-            <mat-card class="example-card" *ngFor="let item of done" (click)="openDetails(item)" cdkDrag>
-
-                <img *ngIf="item.imgUr" width="150" height="150" mat-card-image [src]="item.imgUr" alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                    <div class="row">
-                        <div class="col-10">
-                            <h2 class="m-0">{{item.title}}</h2>
-                        </div>
-                        <div class="col-2">
-                            <i class="material-icons pen">mode_edit</i>
-                        </div>
-                    </div>
-
-                    <p>
-                        {{item.desc}}
-                    </p>
-                </mat-card-content>
-                <mat-card-footer>
-                    <div class="row ml-3 mb-3">
-                        <i class="material-icons time">access_time</i>
-                        <span class="time ml-2 mr-4">{{item.date}}</span>
-                        <i class="material-icons time ml-5">account_circle</i>
-                        <i class="material-icons time">account_circle</i>
-                        <i class="material-icons time">account_circle</i>
-                    </div>
-                </mat-card-footer>
-            </mat-card>
 
 
-        </div>
-    </div>
+
 </div>

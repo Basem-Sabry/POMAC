@@ -5,6 +5,8 @@ import { NewTaskComponent } from '../new-task/new-task.component';
 import { TasksServiceService } from '../services/tasks-service.service';
 import { map } from 'rxjs/operators';
 import { TaskDetailsComponent } from '../task-details/task-details.component';
+import { Column } from '../models/column.model';
+import { Board } from '../models/board.model';
 
 
 @Component({
@@ -13,6 +15,17 @@ import { TaskDetailsComponent } from '../task-details/task-details.component';
   styleUrls: ['./drag-drop.component.css']
 })
 export class DragDropComponent  {
+  board:Board=new Board('Main',[
+    new Column('todo',['task1','task2','task3'],['task1','task2','task3'],['task1','task2','task3']),
+    new Column('done',['task4','task5','task6'],['task1','task2','task3'],['task1','task2','task3']),
+    new Column('future',['task7','task8','task9'],['task1','task2','task3'],['task1','task2','task3']),
+
+
+
+
+
+
+  ])
   alltasks: any[] =[];
   constructor(public dialog: MatDialog , private taskService:TasksServiceService,) {
  taskService.getTasks().pipe(map((response:any )=>{
